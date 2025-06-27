@@ -14,6 +14,13 @@ This project demonstrates how to containerize and deploy a Single Page Applicati
 ![screenshot](./80.png) 
 ![screenshot](./84.png) 
 ![screenshot](./86.png) 
+![screenshot](./K8s.png) 
+![screenshot](./nodovi.png) 
+![screenshot](./yaml.png) 
+![screenshot](./docker.png) 
+![screenshot](./docker-run.png) 
+![screenshot](./deploy.png) 
+![screenshot](./web-radi.png) 
 
 ---
 
