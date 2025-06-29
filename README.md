@@ -44,6 +44,174 @@ Troubleshooting:
 - Pod stuck in Pending: check if the image is available in kind
 - Context errors: ensure 'kubectl config get-contexts' shows your current context
 
+<hr/>
+
+
+✅ Project Overview
+markdown
+Copy
+Edit
+# 🌐 Single Page Application (SPA) in Kubernetes with Docker & Kind
+
+This project demonstrates how to deploy a simple Single Page Application (SPA) using:
+
+- Docker for containerizing the web app
+- Kind (Kubernetes in Docker) for a local K8s cluster
+- `kubectl` for managing deployments
+- Nginx as a static web server
+
+---
+
+## 📦 Tech Stack
+
+- HTML/CSS/JS – Frontend SPA
+- Docker – Containerization
+- NGINX – Serving static content
+- Kubernetes – Orchestration
+- Kind – Local cluster for development
+
+---
+
+## 🖼️ Architecture
+
+```mermaid
+graph TD
+  A[Developer Machine] --> B[Docker Build Image]
+  B --> C[Kind Cluster]
+  C --> D[Kubernetes Deployment]
+  D --> E[Pod: webserver]
+  E --> F[Service: NodePort]
+  F --> G[localhost:PORT]
+📁 Project Structure
+pgsql
+Copy
+Edit
+project-root/
+├── spa/
+│   ├── index.html
+│   ├── styles.css
+│   └── Dockerfile
+├── deployment.yaml
+├── service.yaml
+├── README.md
+🧾 HTML (spa/index.html)
+html
+Copy
+Edit
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My SPA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Welcome to My SPA 🚀</h1>
+  <p>This is a simple Single Page Application served using Kubernetes & Docker.</p>
+</body>
+</html>
+🎨 CSS (spa/styles.css)
+css
+Copy
+Edit
+body {
+  background: #f2f2f2;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+  padding: 50px;
+}
+
+h1 {
+  color: #2b2b2b;
+}
+
+p {
+  color: #555;
+}
+🐳 Dockerfile (spa/Dockerfile)
+Dockerfile
+Copy
+Edit
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+Build the image:
+
+bash
+Copy
+Edit
+docker build -t spa:latest ./spa
+🧠 Kubernetes Deployment (deployment.yaml)
+yaml
+Copy
+Edit
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spa-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spa
+  template:
+    metadata:
+      labels:
+        app: spa
+    spec:
+      containers:
+      - name: spa-container
+        image: spa:latest
+        ports:
+        - containerPort: 80
+🌐 Kubernetes Service (service.yaml)
+yaml
+Copy
+Edit
+apiVersion: v1
+kind: Service
+metadata:
+  name: spa-service
+spec:
+  type: NodePort
+  selector:
+    app: spa
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080
+🚀 How to Run (Step-by-Step)
+bash
+Copy
+Edit
+# 1. Build Docker Image
+docker build -t spa:latest ./spa
+
+# 2. Create Kind Cluster
+kind create cluster --name spa-cluster
+
+# 3. Load image into Kind
+kind load docker-image spa:latest --name spa-cluster
+
+# 4. Deploy to K8s
+kubectl apply -f deployment.yaml
+kubectl apply -f service.yaml
+
+# 5. Access App
+http://localhost:30080
+📊 Diagram Summary
+A SPA → Docker Image → Kind → Kubernetes (Deployment + Service) → Access via localhost:30080
+
+🧪 Test
+bash
+Copy
+Edit
+kubectl get pods
+kubectl get svc
+kubectl describe pod <pod-name>
+💬 Author
+Dejvid
+🚀 Learning DevOps | 🌐 Kubernetes | 🐳 Docker Enthusiast
+
   
 ![screenshot](./1.png) 
 ![screenshot](./5.png) 
