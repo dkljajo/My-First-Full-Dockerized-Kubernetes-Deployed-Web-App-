@@ -73,7 +73,7 @@ This project demonstrates how to deploy a simple Single Page Application (SPA) u
 ---
 
 ## 🖼️ Architecture
-
+---
 
 📁 Project Structure
 pgsql
@@ -87,6 +87,7 @@ project-root/
 ├── deployment.yaml
 ├── service.yaml
 ├── README.md
+---
 🧾 HTML (spa/index.html)
 html
 Copy
