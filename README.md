@@ -71,12 +71,38 @@ This project demonstrates how to deploy a simple Single Page Application (SPA) u
 - Kubernetes – Orchestration
 - Kind – Local cluster for development
 
+
+# 🌐 Single Page Application (SPA) in Kubernetes with Docker & Kind
+
+This project demonstrates how to deploy a simple Single Page Application (SPA) using:
+
+- Docker for containerizing the web app
+- Kind (Kubernetes in Docker) for a local K8s cluster
+- `kubectl` for managing deployments
+- Nginx as a static web server
+
+---
+
+## 📦 Tech Stack
+
+- HTML/CSS/JS – Frontend SPA
+- Docker – Containerization
+- NGINX – Serving static content
+- Kubernetes – Orchestration
+- Kind – Local cluster for development
+
 ---
 
 ## 🖼️ Architecture
 
 ```mermaid
-
+graph TD
+  A[Developer Machine] --> B[Docker Build Image]
+  B --> C[Kind Cluster]
+  C --> D[Kubernetes Deployment]
+  D --> E[Pod: webserver]
+  E --> F[Service: NodePort]
+  F --> G[localhost:PORT]
 📁 Project Structure
 pgsql
 Copy
@@ -206,6 +232,8 @@ kubectl describe pod <pod-name>
 💬 Author
 Dejvid
 🚀 Learning DevOps | 🌐 Kubernetes | 🐳 Docker Enthusiast
+
+
 
   
 ![screenshot](./1.png) 
