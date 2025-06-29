@@ -76,13 +76,7 @@ This project demonstrates how to deploy a simple Single Page Application (SPA) u
 ## 🖼️ Architecture
 
 ```mermaid
-graph TD
-  A[Developer Machine] --> B[Docker Build Image]
-  B --> C[Kind Cluster]
-  C --> D[Kubernetes Deployment]
-  D --> E[Pod: webserver]
-  E --> F[Service: NodePort]
-  F --> G[localhost:PORT]
+
 📁 Project Structure
 pgsql
 Copy
