@@ -77,28 +77,6 @@ Troubleshooting:
 
 ---
 
-✅ Project Overview
-markdown
-Copy
-Edit
-# 🌐 Single Page Application (SPA) in Kubernetes with Docker & Kind
-
-This project demonstrates how to deploy a simple Single Page Application (SPA) using:
-
-- Docker for containerizing the web app
-- Kind (Kubernetes in Docker) for a local K8s cluster
-- `kubectl` for managing deployments
-- Nginx as a static web server
-
----
-
-## 📦 Tech Stack
-
-- HTML/CSS/JS – Frontend SPA
-- Docker – Containerization
-- NGINX – Serving static content
-- Kubernetes – Orchestration
-- Kind – Local cluster for development
 
 
 # 🌐 Single Page Application (SPA) in Kubernetes with Docker & Kind
