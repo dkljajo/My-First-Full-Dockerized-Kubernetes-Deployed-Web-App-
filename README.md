@@ -233,7 +233,7 @@ kubectl describe pod <pod-name>
 Dejvid
 🚀 Learning DevOps | 🌐 Kubernetes | 🐳 Docker Enthusiast
 
-
+---
 <hr/>
   
 ![screenshot](./1.png) 
