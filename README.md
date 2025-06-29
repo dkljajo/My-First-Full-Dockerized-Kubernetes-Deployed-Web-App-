@@ -75,7 +75,6 @@ This project demonstrates how to deploy a simple Single Page Application (SPA) u
 ## 🖼️ Architecture
 
 
----
 📁 Project Structure
 pgsql
 Copy
