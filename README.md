@@ -48,6 +48,35 @@ Troubleshooting:
 
 
 
+
+  
+![screenshot](./1.png) 
+![screenshot](./5.png) 
+![screenshot](./10.png) 
+![screenshot](./20.png) 
+![screenshot](./80.png) 
+![screenshot](./84.png) 
+![screenshot](./86.png) 
+![screenshot](./K8s.png) 
+![screenshot](./nodovi.png)
+![screenshot](./yaml.png)
+![screenshot](./docker.png)
+![screenshot](./docker-run.png)
+![screenshot](./deploy.png)
+![screenshot](./web-radi.png)
+
+
+---
+
+## 🛠 Tech Stack
+
+- HTML/CSS/JavaScript (SPA)
+- Docker
+- Kubernetes (via Kind)
+- kubectl
+
+---
+
 ✅ Project Overview
 markdown
 Copy
@@ -235,31 +264,3 @@ Dejvid
 
 ---
 <hr/>
-  
-![screenshot](./1.png) 
-![screenshot](./5.png) 
-![screenshot](./10.png) 
-![screenshot](./20.png) 
-![screenshot](./80.png) 
-![screenshot](./84.png) 
-![screenshot](./86.png) 
-![screenshot](./K8s.png) 
-![screenshot](./nodovi.png)
-![screenshot](./yaml.png)
-![screenshot](./docker.png)
-![screenshot](./docker-run.png)
-![screenshot](./deploy.png)
-![screenshot](./web-radi.png)
-
-
----
-
-## 🛠 Tech Stack
-
-- HTML/CSS/JavaScript (SPA)
-- Docker
-- Kubernetes (via Kind)
-- kubectl
-
----
-
