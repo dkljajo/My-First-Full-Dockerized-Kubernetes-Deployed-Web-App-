@@ -12,16 +12,7 @@ The project simulates real-world Kubernetes deployment practices and is suitable
 
 ---
 
-## 🧱 Architecture
 
-```mermaid
-graph TD
-  A[Developer Workstation] --> B[Docker Image Build]
-  B --> C[Kind Kubernetes Cluster]
-  C --> D[Kubernetes Deployment]
-  D --> E[Pod: SPA + NGINX]
-  E --> F[Kubernetes Service]
-  F --> G[localhost Access]
 ```
 # 🚀 Full Dockerized & Kubernetes-Deployed Single Page Application
 
