@@ -139,7 +139,33 @@ kubectl get pods
 kubectl logs <pod-name>
 kubectl describe pod <pod-name>
 ```
+## 📸 Screenshots
 
+### Docker
+
+![Docker Build](./screenshots/docker.png)
+![Docker Run](./screenshots/docker-run.png)
+
+### Kubernetes
+
+![Deployment](./screenshots/deploy.png)
+![Pods](./screenshots/nodovi.png)
+![YAML](./screenshots/yaml.png)
+![Kubernetes Overview](./screenshots/K8s.png)
+
+### Application
+
+![Web App Running](./screenshots/web-radi.png)
+
+### Additional Steps
+
+![Step 1](./screenshots/1.png)
+![Step 5](./screenshots/5.png)
+![Step 10](./screenshots/10.png)
+![Step 20](./screenshots/20.png)
+![Step 80](./screenshots/80.png)
+![Step 84](./screenshots/84.png)
+![Step 86](./screenshots/86.png)
 ---
 
 ## 👤 Author
