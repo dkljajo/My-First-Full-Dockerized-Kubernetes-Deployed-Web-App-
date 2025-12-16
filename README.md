@@ -1,119 +1,46 @@
-# My-First-Full-Dockerized-Kubernetes-Deployed-Web-App-
+🚀 Full Dockerized & Kubernetes-Deployed Single Page Application
+Overview
 
-# 🚀 SPA Deployment with Docker & Kubernetes
+This repository demonstrates an end-to-end DevOps workflow for containerizing and deploying a Single Page Application (SPA) using Docker, Kubernetes, and Kind (Kubernetes in Docker) in a local development environment.
 
-This project demonstrates how to containerize and deploy a Single Page Application (SPA) using **Docker**, **Kind (Kubernetes in Docker)**, and **kubectl** — all running on a local environment.
+The project covers:
 
-1. Docker - Containerization
-Docker is a platform for developing, shipping, and running applications in containers.
-Containers are lightweight, portable units that contain all dependencies.
-A Dockerfile is used to define instructions to build a container image.
-Key commands:
-- docker build -t <image-name> .
-- docker run -p 8080:80 <image-name>
-- docker images / docker ps / docker rm / docker rmi
-2. Kubernetes
-Kubernetes (K8s) is a container orchestration platform for automating deployment, scaling, and management.
-Key concepts:
-- Pod: the smallest deployable unit (can contain one or more containers)
-- Deployment: manages Pods and ReplicaSets
-- Service: abstracts access to a set of Pods
-Common commands:
-- kubectl get pods/services/deployments
-- kubectl apply -f deployment.yaml
-- kubectl port-forward svc/<service-name> 8080:80
-3. Kind (Kubernetes in Docker)
-Kind allows running Kubernetes clusters in Docker containers, ideal for local testing.
-Commands:
-- kind create cluster --name <name>
-- kind delete cluster --name <name>SPA Deployment with Docker & Kubernetes
-Troubleshooting:
-- Docker daemon permission: use 'sudo usermod -aG docker $USER' then 'newgrp docker'
-- Ensure Docker is running before creating a cluster
-4. Full Deployment Steps
-1. Write a Dockerfile for your SPA (e.g., using Nginx)
-2. Build the image: docker build -t webserver .
-3. Create deployment.yaml to define K8s resources
-4. Start kind cluster: kind create cluster --name my-cluster
-5. Load image: kind load docker-image webserver --name my-cluster
-6. Apply deployment: kubectl apply -f deployment.yaml
-7. Expose service: kubectl port-forward service/webserver-service 8080:80
-5. Common Issues
-- 'kubectl not found': install it from the official K8s site
-- Docker permission errors: fix user group as noted earlier
-- Pod stuck in Pending: check if the image is available in kind
-- Context errors: ensure 'kubectl config get-contexts' shows your current context
+Building a production-ready Docker image
 
-<hr/>
+Running a local Kubernetes cluster with Kind
 
+Deploying workloads using Kubernetes manifests
 
+Exposing services for local access
 
+Debugging and operational best practices
 
-  
-![screenshot](./1.png) 
-![screenshot](./5.png) 
-![screenshot](./10.png) 
-![screenshot](./20.png) 
-![screenshot](./80.png) 
-![screenshot](./84.png) 
-![screenshot](./86.png) 
-![screenshot](./K8s.png) 
-![screenshot](./nodovi.png)
-![screenshot](./yaml.png)
-![screenshot](./docker.png)
-![screenshot](./docker-run.png)
-![screenshot](./deploy.png)
-![screenshot](./web-radi.png)
+This setup closely mirrors real-world Kubernetes development and is suitable for learning, experimentation, and portfolio demonstration.
 
-
----
-
-## 🛠 Tech Stack
-
-- HTML/CSS/JavaScript (SPA)
-- Docker
-- Kubernetes (via Kind)
-- kubectl
-
----
-
-
-
-# 🌐 Single Page Application (SPA) in Kubernetes with Docker & Kind
-
-This project demonstrates how to deploy a simple Single Page Application (SPA) using:
-
-- Docker for containerizing the web app
-- Kind (Kubernetes in Docker) for a local K8s cluster
-- `kubectl` for managing deployments
-- Nginx as a static web server
-
----
-
-## 📦 Tech Stack
-
-- HTML/CSS/JS – Frontend SPA
-- Docker – Containerization
-- NGINX – Serving static content
-- Kubernetes – Orchestration
-- Kind – Local cluster for development
-
----
-
-## 🖼️ Architecture
-
-```mermaid
+🧱 Architecture
 graph TD
-  A[Developer Machine] --> B[Docker Build Image]
-  B --> C[Kind Cluster]
+  A[Developer Workstation] --> B[Docker Image Build]
+  B --> C[Kind Kubernetes Cluster]
   C --> D[Kubernetes Deployment]
-  D --> E[Pod: webserver]
-  E --> F[Service: NodePort]
-  F --> G[localhost:PORT]
+  D --> E[Pod: SPA + NGINX]
+  E --> F[Kubernetes Service]
+  F --> G[localhost Access]
+
+🛠 Tech Stack
+
+Frontend: HTML / CSS / JavaScript (SPA)
+
+Web Server: NGINX
+
+Containerization: Docker
+
+Orchestration: Kubernetes
+
+Local Cluster: Kind (Kubernetes in Docker)
+
+CLI Tools: kubectl, docker, kind
+
 📁 Project Structure
-pgsql
-Copy
-Edit
 project-root/
 ├── spa/
 │   ├── index.html
@@ -121,57 +48,27 @@ project-root/
 │   └── Dockerfile
 ├── deployment.yaml
 ├── service.yaml
-├── README.md
-🧾 HTML (spa/index.html)
-html
-Copy
-Edit
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>My SPA</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <h1>Welcome to My SPA 🚀</h1>
-  <p>This is a simple Single Page Application served using Kubernetes & Docker.</p>
-</body>
-</html>
-🎨 CSS (spa/styles.css)
-css
-Copy
-Edit
-body {
-  background: #f2f2f2;
-  font-family: 'Segoe UI', sans-serif;
-  text-align: center;
-  padding: 50px;
-}
+└── README.md
 
-h1 {
-  color: #2b2b2b;
-}
-
-p {
-  color: #555;
-}
-🐳 Dockerfile (spa/Dockerfile)
+🐳 Docker
 Dockerfile
-Copy
-Edit
 FROM nginx:alpine
 COPY . /usr/share/nginx/html
-Build the image:
 
-bash
-Copy
-Edit
+
+This image:
+
+Uses a lightweight NGINX Alpine base
+
+Serves static SPA content
+
+Is optimized for fast startup and low resource usage
+
+Build Image
 docker build -t spa:latest ./spa
-🧠 Kubernetes Deployment (deployment.yaml)
-yaml
-Copy
-Edit
+
+☸️ Kubernetes
+Deployment (deployment.yaml)
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -187,14 +84,12 @@ spec:
         app: spa
     spec:
       containers:
-      - name: spa-container
-        image: spa:latest
-        ports:
-        - containerPort: 80
-🌐 Kubernetes Service (service.yaml)
-yaml
-Copy
-Edit
+        - name: spa-container
+          image: spa:latest
+          ports:
+            - containerPort: 80
+
+Service (service.yaml)
 apiVersion: v1
 kind: Service
 metadata:
@@ -207,38 +102,84 @@ spec:
     - port: 80
       targetPort: 80
       nodePort: 30080
-🚀 How to Run (Step-by-Step)
-bash
-Copy
-Edit
-# 1. Build Docker Image
-docker build -t spa:latest ./spa
 
-# 2. Create Kind Cluster
+
+The service exposes the application locally via NodePort for easy testing.
+
+🚀 Deployment Workflow
+1️⃣ Create Kind Cluster
 kind create cluster --name spa-cluster
 
-# 3. Load image into Kind
+2️⃣ Load Docker Image into Kind
 kind load docker-image spa:latest --name spa-cluster
 
-# 4. Deploy to K8s
+3️⃣ Deploy Kubernetes Resources
 kubectl apply -f deployment.yaml
 kubectl apply -f service.yaml
 
-# 5. Access App
-http://localhost:30080
-📊 Diagram Summary
-A SPA → Docker Image → Kind → Kubernetes (Deployment + Service) → Access via localhost:30080
-
-🧪 Test
-bash
-Copy
-Edit
+4️⃣ Verify Deployment
 kubectl get pods
-kubectl get svc
-kubectl describe pod <pod-name>
-💬 Author
-Dejvid
-🚀 Learning DevOps | 🌐 Kubernetes | 🐳 Docker Enthusiast
+kubectl get services
 
----
-<hr/>
+5️⃣ Access Application
+http://localhost:30080
+
+🧪 Testing & Debugging
+
+Useful operational commands:
+
+kubectl describe pod <pod-name>
+kubectl logs <pod-name>
+kubectl get events
+
+⚠️ Common Issues & Troubleshooting
+Docker Permission Issues
+sudo usermod -aG docker $USER
+newgrp docker
+
+Kubernetes Context Issues
+kubectl config get-contexts
+kubectl config use-context kind-spa-cluster
+
+Pod Stuck in Pending
+
+Ensure the Docker image is loaded into Kind
+
+Verify image name and tag match the deployment
+
+📸 Screenshots
+
+Screenshots documenting the full lifecycle (Docker build, Kubernetes resources, running app):
+
+./1.png
+./5.png
+./10.png
+./20.png
+./80.png
+./84.png
+./86.png
+./K8s.png
+./nodovi.png
+./yaml.png
+./docker.png
+./docker-run.png
+./deploy.png
+./web-radi.png
+
+🎯 Key Learnings
+
+Docker image lifecycle and optimization
+
+Kubernetes core objects (Pod, Deployment, Service)
+
+Local Kubernetes development using Kind
+
+Debugging containerized workloads
+
+Infrastructure-as-Code fundamentals
+
+👤 Author
+
+D4v1d Klj4j0
+🚀 Aspiring DevOps Engineer
+🐳 Docker | ☸️ Kubernetes | 🌐 Cloud-Native Technologies
